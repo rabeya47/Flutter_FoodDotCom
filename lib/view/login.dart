@@ -1,5 +1,10 @@
+import 'dart:convert';
+
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_food_dot_com/Model/user.dart';
+import 'package:flutter_food_dot_com/networks/http_helper.dart';
+import 'package:http/http.dart' as http;
 
 class MyLogin extends StatefulWidget {
   const MyLogin({Key? key}) : super(key: key);
@@ -9,6 +14,9 @@ class MyLogin extends StatefulWidget {
 }
 
 class _MyLoginState extends State<MyLogin> {
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -40,6 +48,7 @@ class _MyLoginState extends State<MyLogin> {
                       child: Column(
                         children: [
                           TextField(
+                            controller: emailController,
                             style: TextStyle(color: Colors.black),
                             decoration: InputDecoration(
                                 fillColor: Colors.grey.shade100,
@@ -53,6 +62,7 @@ class _MyLoginState extends State<MyLogin> {
                             height: 30,
                           ),
                           TextField(
+                            controller: passwordController,
                             style: TextStyle(),
                             obscureText: true,
                             decoration: InputDecoration(
@@ -79,7 +89,47 @@ class _MyLoginState extends State<MyLogin> {
                                 backgroundColor: Color(0xff4c505b),
                                 child: IconButton(
                                     color: Colors.white,
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      print(emailController.text);
+                                      print(passwordController.text);
+
+
+                                      String email = emailController.text;
+                                      String password = passwordController.text;
+
+                                      User user = User(
+                                          email: email,
+                                          password: password,
+                                          name: ''
+                                      );
+
+
+
+                                      signin(user).then((res) {
+
+
+                                        Map<String,dynamic> map = jsonDecode(res.body);
+                                        print(map['statusCode']);
+
+                                        if(map['statusCode'] == 200){
+                                          SnackBar snackBar = SnackBar(
+                                            content: Text('Sign in Successfull'),
+                                          );
+                                          ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                                          Navigator.pushNamed(context, 'homepage');
+
+                                        }else{
+                                          SnackBar snackBar = SnackBar(
+                                            content: Text('Sign in failed'),
+                                          );
+                                          ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                                        }
+
+
+                                      });
+
+
+                                    },
                                     icon: Icon(
                                       Icons.arrow_forward,
                                     )),
@@ -131,3 +181,4 @@ class _MyLoginState extends State<MyLogin> {
     );
   }
 }
+

@@ -13,6 +13,7 @@ class User{
     required this.password,
   });
 
+
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||

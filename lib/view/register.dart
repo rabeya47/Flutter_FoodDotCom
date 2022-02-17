@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_food_dot_com/Model/user.dart';
-import 'package:http/http.dart' as http;
+import 'package:flutter_food_dot_com/networks/http_helper.dart';
 
 class MyRegister extends StatefulWidget {
   const MyRegister({Key? key}) : super(key: key);
@@ -142,7 +142,46 @@ class _MyRegisterState extends State<MyRegister> {
                                 backgroundColor: Color(0xff4c505b),
                                 child: IconButton(
                                     color: Colors.white,
-                                    onPressed: () {},
+                                    onPressed: () {
+
+
+                                      String name = nameController.text;
+                                      String email = emailController.text;
+                                      String password = passwordController.text;
+
+                                      User user = new User(
+                                          name: name,
+                                          email: email,
+                                          password: password
+                                      );
+                                      print(user);
+
+                                      signup(user).then((res) {
+
+
+                                        Map<String,dynamic> map = jsonDecode(res.body);
+                                        print(map['statusCode']);
+
+                                        if(map['statusCode'] == 200){
+                                          SnackBar snackBar = SnackBar(
+                                            content: Text('Sign up Successfull'),
+                                          );
+                                          ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                                            Navigator.pushNamed(context, 'homepage');
+
+                                        }else{
+                                          SnackBar snackBar = SnackBar(
+                                            content: Text('Sign up failed'),
+                                          );
+                                          ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                                        }
+
+
+                                      });
+
+
+
+                                    },
                                     icon: Icon(
                                       Icons.arrow_forward,
                                     )),
@@ -158,37 +197,6 @@ class _MyRegisterState extends State<MyRegister> {
                               TextButton(
                                 onPressed: () {
                                   Navigator.pushNamed(context, 'login');
-
-                                  print(nameController.text);
-                                  print(emailController.text);
-                                  print(passwordController.text);
-
-
-                                  String name = nameController.text.toString();
-                                  String email = emailController.text.toString();
-                                  String password = passwordController.text.toString();
-
-                                  User user = new User(
-                                  name: name,
-                                  email: email,
-                                  password: password
-                                  );
-
-
-                                  fetchResult(user).then((res) {
-
-                                    print(res.body.toString());
-                                    const snackBar = SnackBar(
-                                      content: Text('Sign up Successfull'),
-                                    );
-
-                                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
-
-
-
-                                  });
-
-
                                 },
 
                                 child: Text(
@@ -220,21 +228,3 @@ class _MyRegisterState extends State<MyRegister> {
 
 
 
-Future<http.Response> fetchResult(User user) async {
-  Map<String, String> requestHeaders = {
-    'Content-type': 'application/json',
-  };
-
-  final response = await http
-      .post(Uri.parse('http://localhost:8081/user/save'),headers: requestHeaders,body: jsonEncode(user.toMap()));
-
-  if (response.statusCode == 200) {
-    // If the server did return a 200 OK response,
-    // then parse the JSON.
-    return  response;
-  } else {
-    // If the server did not return a 200 OK response,
-    // then throw an exception.
-    throw Exception('Failed to load album');
-  }
-}
