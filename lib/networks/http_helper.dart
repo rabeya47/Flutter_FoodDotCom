@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:flutter_food_dot_com/Model/user.dart';
 import 'package:http/http.dart' as http;
 
-var host = 'http://localhost:8081';
+var host = 'http://192.168.1.22:8081';
 var signupApi = host+'/user/save';
 var signinApi = host+'/user/login';
 
