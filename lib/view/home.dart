@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -9,9 +10,12 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
+
+
+
   @override
   Widget build(BuildContext context) {
-
 
     return Scaffold(
       appBar: AppBar(
@@ -37,6 +41,30 @@ class _HomePageState extends State<HomePage> {
               onPressed: (){},
               )
         ],
+
+
+      ),
+
+      body: SafeArea(
+        child: Container(
+          margin: EdgeInsets.all(20),
+          padding: EdgeInsets.symmetric(horizontal: 25, vertical: 5),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(50),
+            border: Border.all(
+              color: Colors.black12,
+            ),
+          ),
+          child: TextField(
+            onChanged: (Value){},
+            decoration: InputDecoration(
+              border: InputBorder.none,
+              icon: SvgPicture.asset("assets/icons/search.svg",color: Colors.black45),
+              hintText: "search here",
+              hintStyle: TextStyle(color: Colors.black26)
+            ),
+          ),
+        ),
 
       ),
 
