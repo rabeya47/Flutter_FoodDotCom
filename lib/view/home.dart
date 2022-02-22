@@ -42,67 +42,123 @@ class _HomePageState extends State<HomePage> {
           )
         ],
       ),
-      body: Column(
-        children: [
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
 
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: TextField(
-              onChanged: (Value) {},
-              decoration: InputDecoration(
-                  prefixIcon: Icon(Icons.search),
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(50))),
-                  hintText: "search here",
-                  hintStyle: TextStyle(color: Colors.black26)),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: TextField(
+                onChanged: (Value) {},
+                decoration: InputDecoration(
+                    prefixIcon: Icon(Icons.search),
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(50))),
+                    hintText: "search here",
+                    hintStyle: TextStyle(color: Colors.black26)),
+              ),
             ),
-          ),
 
-          // Expanded(
-          //   child: GridView.count(
-          //     // Create a grid with 2 columns. If you change the scrollDirection to
-          //     // horizontal, this produces 2 rows.
-          //     crossAxisCount: 2,
-          //     // Generate 100 widgets that display their index in the List.
-          //     children: List.generate(4, (index) {
-          //       return Card(
-          //         shape: RoundedRectangleBorder(
-          //           borderRadius: BorderRadius.circular(15.0),
-          //         ),
-          //         elevation: 4,
-          //         child: Column(
-          //           children: [
-          //             SizedBox(
-          //               height: 10,
-          //             ),
-          //
-          //             Text(
-          //               'Item $index',
-          //               style: Theme.of(context).textTheme.headline5,
-          //             ),
-          //
-          //           ],
-          //         ),
-          //       );
-          //     }),
-          //   ),
-          // ),
+            // Expanded(
+            //   child: GridView.count(
+            //     // Create a grid with 2 columns. If you change the scrollDirection to
+            //     // horizontal, this produces 2 rows.
+            //     crossAxisCount: 2,
+            //     // Generate 100 widgets that display their index in the List.
+            //     children: List.generate(4, (index) {
+            //       return Card(
+            //         shape: RoundedRectangleBorder(
+            //           borderRadius: BorderRadius.circular(15.0),
+            //         ),
+            //         elevation: 4,
+            //         child: Column(
+            //           children: [
+            //             SizedBox(
+            //               height: 10,
+            //             ),
+            //
+            //             Text(
+            //               'Item $index',
+            //               style: Theme.of(context).textTheme.headline5,
+            //             ),
+            //
+            //           ],
+            //         ),
+            //       );
+            //     }),
+            //   ),
+            // ),
 
-         Container(
-           margin: EdgeInsets.only(bottom: 15),
-           padding: EdgeInsets.all(25),
-           decoration: BoxDecoration(
-             color: Colors.white,
-             shape: BoxShape.circle,
-             
-           ),
-           child: Image(
-             image:  AssetImage('assets/images/burger.jpg'), fit: BoxFit.cover),
-           )
+           Container(
+             margin: EdgeInsets.only(bottom: 15),
+             padding: EdgeInsets.all(25),
+             decoration: BoxDecoration(
+               color: Colors.white,
+               borderRadius: BorderRadius.circular(10),
+               boxShadow: [
+                 BoxShadow(
+                   offset: Offset(0,4),
+                   blurRadius: 20,
+                   color: Color(0xFFB0CCE1).withOpacity(0.32),
+                 ),
+               ],
+
+             ),
+             child: Image(
+               image:  AssetImage('assets/images/fastfood.jpg'), fit: BoxFit.cover),
+
+
+             ),
 
 
 
-        ],
+
+            Container(
+              margin: EdgeInsets.only(bottom: 15),
+              padding: EdgeInsets.all(25),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(10),
+                boxShadow: [
+                  BoxShadow(
+                    offset: Offset(0,4),
+                    blurRadius: 20,
+                    color: Color(0xFFB0CCE1).withOpacity(0.32),
+                  ),
+                ],
+
+              ),
+              child: Image(
+                  image:  AssetImage('assets/images/groceries.jpg'), fit: BoxFit.cover),
+
+
+            ),
+
+
+            Container(
+              margin: EdgeInsets.only(bottom: 15),
+              padding: EdgeInsets.all(25),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(10),
+                boxShadow: [
+                  BoxShadow(
+                    offset: Offset(0,4),
+                    blurRadius: 20,
+                    color: Color(0xFFB0CCE1).withOpacity(0.32),
+                  ),
+                ],
+
+              ),
+              child: Image(
+                  image:  AssetImage('assets/images/burger.jpg'), fit: BoxFit.cover),
+
+
+            )
+
+
+          ],
+        ),
       ),
     );
   }
