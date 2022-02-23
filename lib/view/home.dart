@@ -89,49 +89,61 @@ class _HomePageState extends State<HomePage> {
             //   ),
             // ),
 
-           Container(
-             margin: EdgeInsets.only(bottom: 15),
-             padding: EdgeInsets.all(25),
-             decoration: BoxDecoration(
-               color: Colors.white,
-               borderRadius: BorderRadius.circular(10),
-               boxShadow: [
-                 BoxShadow(
-                   offset: Offset(0,4),
-                   blurRadius: 20,
-                   color: Color(0xFFB0CCE1).withOpacity(0.32),
-                 ),
-               ],
+           GestureDetector(
+             onTap: () {
+               Navigator.pushNamed(context, 'fastfood');
+             },
+             child: Container(
 
-             ),
-             child: Image(
-               image:  AssetImage('assets/images/fastfood.jpg'), fit: BoxFit.cover),
+               margin: EdgeInsets.only(bottom: 15),
+               padding: EdgeInsets.all(25),
+               decoration: BoxDecoration(
+                 color: Colors.white,
+                 borderRadius: BorderRadius.circular(10),
+                 boxShadow: [
+                   BoxShadow(
+                     offset: Offset(0,4),
+                     blurRadius: 20,
+                     color: Color(0xFFB0CCE1).withOpacity(0.32),
+                   ),
+                 ],
+
+               ),
+               child: Image(
+
+                 image:  AssetImage('assets/images/fastfood.jpg'), fit: BoxFit.cover),
 
 
-             ),
+               ),
+           ),
 
 
 
 
-            Container(
-              margin: EdgeInsets.only(bottom: 15),
-              padding: EdgeInsets.all(25),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(10),
-                boxShadow: [
-                  BoxShadow(
-                    offset: Offset(0,4),
-                    blurRadius: 20,
-                    color: Color(0xFFB0CCE1).withOpacity(0.32),
-                  ),
-                ],
+            GestureDetector(
+              onTap: (){
+                Navigator.pushNamed(context, 'groceries');
+              },
+              child: Container(
+                margin: EdgeInsets.only(bottom: 15),
+                padding: EdgeInsets.all(25),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(10),
+                  boxShadow: [
+                    BoxShadow(
+                      offset: Offset(0,4),
+                      blurRadius: 20,
+                      color: Color(0xFFB0CCE1).withOpacity(0.32),
+                    ),
+                  ],
+
+                ),
+                child: Image(
+                    image:  AssetImage('assets/images/groceries.jpg'), fit: BoxFit.cover),
+
 
               ),
-              child: Image(
-                  image:  AssetImage('assets/images/groceries.jpg'), fit: BoxFit.cover),
-
-
             ),
 
 
@@ -151,7 +163,28 @@ class _HomePageState extends State<HomePage> {
 
               ),
               child: Image(
-                  image:  AssetImage('assets/images/burger.jpg'), fit: BoxFit.cover),
+                  image:  AssetImage('assets/images/food_offer.jpg'), fit: BoxFit.cover),
+
+
+            ),
+
+            Container(
+              margin: EdgeInsets.only(bottom: 15),
+              padding: EdgeInsets.all(25),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(10),
+                boxShadow: [
+                  BoxShadow(
+                    offset: Offset(0,4),
+                    blurRadius: 20,
+                    color: Color(0xFFB0CCE1).withOpacity(0.32),
+                  ),
+                ],
+
+              ),
+              child: Image(
+                  image:  AssetImage('assets/images/food_offer60.png'), fit: BoxFit.cover),
 
 
             )
