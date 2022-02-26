@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_food_dot_com/model/product.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class HomePage extends StatefulWidget {
@@ -16,11 +17,11 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
-        leading: IconButton(
-          icon:
-              SvgPicture.asset("assets/icons/menu.svg", color: Colors.black45),
-          onPressed: () {},
-        ),
+        // leading: IconButton(
+        //   icon:
+        //       SvgPicture.asset("assets/icons/menu.svg", color: Colors.black45),
+        //    onPressed: () {},
+        // ),
         title: RichText(
           text: TextSpan(
             style: Theme.of(context)
@@ -38,10 +39,73 @@ class _HomePageState extends State<HomePage> {
           IconButton(
             icon: SvgPicture.asset("assets/icons/bell.svg",
                 color: Colors.black45),
-            onPressed: () {},
+            onPressed: () {
+              // getAllProduct(product).then((res) {
+              //
+              //
+              //   Map<String,dynamic> map = jsonDecode(res.body);
+              //   print(map['statusCode']);
+              //
+              //   if(map['statusCode'] == 200){
+              //
+              //
+              //
+              //   }else{
+              //
+              //   }
+
+
+              // }
+              // );
+            },
           )
         ],
       ),
+      drawer: Drawer(
+
+
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            DrawerHeader(
+              child: Text(
+                'Food',
+                style: TextStyle(color: Colors.yellow, fontSize: 25),
+              ),
+              decoration: BoxDecoration(
+                  color: Colors.green,
+                  image: DecorationImage(
+                      fit: BoxFit.fill,
+                      image: AssetImage('assets/images/cover.jpg'))),
+            ),
+            ListTile(
+              leading: Icon(Icons.input),
+              title: Text('Welcome'),
+              onTap: () => {},
+            ),
+            ListTile(
+              leading: Icon(Icons.verified_user),
+              title: Text('Profile'),
+              onTap: () => {Navigator.of(context).pop()},
+            ),
+            ListTile(
+              leading: Icon(Icons.settings),
+              title: Text('Settings'),
+              onTap: () => {Navigator.of(context).pop()},
+            ),
+            ListTile(
+              leading: Icon(Icons.border_color),
+              title: Text('Feedback'),
+              onTap: () => {Navigator.of(context).pop()},
+            ),
+            ListTile(
+              leading: Icon(Icons.exit_to_app),
+              title: Text('Logout'),
+              onTap: () => {Navigator.pushNamed(context, 'login')},
+            ),
+          ],
+        ),
+      )      ,
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -193,6 +257,7 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ),
+
     );
   }
 }

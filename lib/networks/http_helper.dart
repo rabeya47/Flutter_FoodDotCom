@@ -1,13 +1,14 @@
 import 'dart:convert';
 
 import 'package:flutter_food_dot_com/Model/user.dart';
+import 'package:flutter_food_dot_com/model/product.dart';
 import 'package:http/http.dart' as http;
 
 var host = 'http://192.168.1.22:8081';
 //var host = 'http://localhost:8081';
 var signupApi = host+'/user/save';
 var signinApi = host+'/user/login';
-
+var getAllProductApi = host+'/product/getAll';
 
 Map<String, String> requestHeaders = {
   'Content-type': 'application/json',
@@ -41,4 +42,17 @@ Future<http.Response> signin(User user) async {
   // }
 }
 
+
+
+
+
+Future<http.Response> getAllProduct(Product product) async {
+
+
+  final response = await http
+      .post(Uri.parse(getAllProductApi),headers: requestHeaders,body: jsonEncode(product.toMap()));
+  return  response;
+
+
+}
 
