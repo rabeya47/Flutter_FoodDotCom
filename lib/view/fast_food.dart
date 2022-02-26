@@ -59,39 +59,36 @@ class _FastFoodState extends State<FastFood> {
 
               ),
 
+            Container(
+              height: 200,
+              width: 200,
+              child: Card(
+                child: ListTile(
+                  title: Text(""),
+                ),
+                elevation: 10,
+                shadowColor: Colors.grey,
+                margin: EdgeInsets.all(0),
+                shape:  OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: BorderSide(color: Colors.white, width: 1)
+                ),
+              ),
+            )
 
 
-            // Expanded(
-            //   child: GridView.count(
-            //     // Create a grid with 2 columns. If you change the scrollDirection to
-            //     // horizontal, this produces 2 rows.
-            //     crossAxisCount: 2,
-            //     // Generate 100 widgets that display their index in the List.
-            //     children: List.generate(4, (index) {
-            //       return Card(
-            //         shape: RoundedRectangleBorder(
-            //           borderRadius: BorderRadius.circular(15.0),
-            //         ),
-            //         elevation: 4,
-            //         child: Column(
-            //           children: [
-            //             SizedBox(
-            //               height: 10,
-            //             ),
-            //
-            //             Text(
-            //               'Item $index',
-            //               style: Theme.of(context).textTheme.headline5,
-            //             ),
-            //
-            //           ],
-            //         ),
-            //       );
-            //     }),
-            //   ),
-            // ),
+
           ],
         ),
+
+
+
+
+
+
+
+
+
       ),
     );
   }

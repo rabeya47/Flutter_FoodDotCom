@@ -1,6 +1,9 @@
+import 'dart:convert';
+
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_food_dot_com/model/product.dart';
+import 'package:flutter_food_dot_com/networks/http_helper.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class HomePage extends StatefulWidget {
@@ -40,23 +43,23 @@ class _HomePageState extends State<HomePage> {
             icon: SvgPicture.asset("assets/icons/bell.svg",
                 color: Colors.black45),
             onPressed: () {
-              // getAllProduct(product).then((res) {
-              //
-              //
-              //   Map<String,dynamic> map = jsonDecode(res.body);
-              //   print(map['statusCode']);
-              //
-              //   if(map['statusCode'] == 200){
-              //
-              //
-              //
-              //   }else{
-              //
-              //   }
+              getAllProduct().then((res) {
 
 
-              // }
-              // );
+                Map<String,dynamic> map = jsonDecode(res.body);
+                print(map['statusCode']);
+
+                if(map['statusCode'] == 200){
+                print("good");
+
+
+                }else{
+
+                }
+
+
+              }
+              );
             },
           )
         ],
