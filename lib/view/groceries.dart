@@ -16,7 +16,7 @@ class _GroceriesState extends State<Groceries> {
   List<Product> plist = [];
   @override
   void initState() {
-    fideByCategoryIdTwo().then((res) {
+    fideByCategoryIdOne().then((res) {
       Map<String, dynamic> map = jsonDecode(res.body);
       var data = map['data'] as List<dynamic>;
       plist = data.map((e) => Product.fromMap(e)).toList();
@@ -34,7 +34,7 @@ class _GroceriesState extends State<Groceries> {
         elevation: 0,
         leading: IconButton(
           icon:
-          SvgPicture.asset("assets/icons/back.svg", color: Colors.black45),
+          SvgPicture.asset("assets/icons/back.svg"),
           onPressed: () {
             Navigator.pushNamed(context, 'homepage');
           },
@@ -55,8 +55,7 @@ class _GroceriesState extends State<Groceries> {
         ),
         actions: <Widget>[
           IconButton(
-            icon: SvgPicture.asset("assets/icons/cart.svg",
-                color: Colors.black45),
+            icon: SvgPicture.asset("assets/icons/cart.svg"),
             onPressed: () {},
           )
         ],

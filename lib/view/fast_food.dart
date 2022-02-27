@@ -16,7 +16,7 @@ class _FastFoodState extends State<FastFood> {
   List<Product> plist = [];
   @override
   void initState() {
-    fideByCategoryIdOne().then((res) {
+    fideByCategoryIdTwo().then((res) {
       Map<String, dynamic> map = jsonDecode(res.body);
       var data = map['data'] as List<dynamic>;
       plist = data.map((e) => Product.fromMap(e)).toList();

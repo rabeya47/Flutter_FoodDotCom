@@ -9,7 +9,7 @@ import 'package:http/http.dart' as http;
 var signupApi = host+'/user/save';
 var signinApi = host+'/user/login';
 var getAllProductApi = host+'/product/getAll';
-var fideByCategoryIdApi = host+ '/product/category/{categoryId}';
+var fideByCategoryIdApi = host+ '/product/category/';
 
 Map<String, String> requestHeaders = {
   'Content-type': 'application/json',
@@ -50,9 +50,9 @@ Future<http.Response> getAllProduct() async {
 
 
 
-Future<http.Response> fideByCategoryIdOne() async {
+Future<http.Response> fideByCategoryIdTwo() async {
   final response = await http
-      .get(Uri.parse(fideByCategoryIdApi+'1'));
+      .get(Uri.parse(fideByCategoryIdApi+'2')); //fast food
   return  response;
 
 }
@@ -60,9 +60,9 @@ Future<http.Response> fideByCategoryIdOne() async {
 
 
 
-Future<http.Response> fideByCategoryIdTwo() async {
+Future<http.Response> fideByCategoryIdOne() async {
   final response = await http
-      .get(Uri.parse(fideByCategoryIdApi+'2'));
+      .get(Uri.parse(fideByCategoryIdApi+'1')); //groceries
   return  response;
 
 }
