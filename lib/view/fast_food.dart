@@ -1,4 +1,8 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_food_dot_com/model/product.dart';
+import 'package:flutter_food_dot_com/networks/http_helper.dart';
 import 'package:flutter_svg/svg.dart';
 
 class FastFood extends StatefulWidget {
@@ -9,6 +13,20 @@ class FastFood extends StatefulWidget {
 }
 
 class _FastFoodState extends State<FastFood> {
+  List<Product> plist = [];
+  @override
+  void initState() {
+    fideByCategoryIdOne().then((res) {
+      Map<String, dynamic> map = jsonDecode(res.body);
+      var data = map['data'] as List<dynamic>;
+      plist = data.map((e) => Product.fromMap(e)).toList();
+      setState(() {
+
+      });
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,25 +34,23 @@ class _FastFoodState extends State<FastFood> {
         backgroundColor: Colors.white,
         elevation: 0,
         leading: IconButton(
-          icon:
-          SvgPicture.asset("assets/icons/back.svg"),
+          icon: SvgPicture.asset("assets/icons/back.svg"),
           onPressed: () {
             Navigator.pushNamed(context, 'homepage');
           },
         ),
-          title: RichText(
-            text: TextSpan(
-              style: Theme.of(context)
-                  .textTheme
-                  .subtitle1
-                  ?.copyWith(fontWeight: FontWeight.bold),
-              children: [
-                TextSpan(text: "Fast ", style: TextStyle(color: Colors.black)),
-                TextSpan(text: "Food ", style: TextStyle(color: Colors.cyan)),
-
-              ],
-            ),
+        title: RichText(
+          text: TextSpan(
+            style: Theme.of(context)
+                .textTheme
+                .subtitle1
+                ?.copyWith(fontWeight: FontWeight.bold),
+            children: [
+              TextSpan(text: "Fast ", style: TextStyle(color: Colors.black)),
+              TextSpan(text: "Food ", style: TextStyle(color: Colors.cyan)),
+            ],
           ),
+        ),
         actions: <Widget>[
           IconButton(
             icon: SvgPicture.asset("assets/icons/cart.svg"),
@@ -46,49 +62,52 @@ class _FastFoodState extends State<FastFood> {
         child: Column(
           children: [
             Padding(
-                padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(8.0),
               child: TextField(
                 onChanged: (Value) {},
                 decoration: InputDecoration(
-                  prefixIcon: Icon(Icons.search),
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(50))),
+                    prefixIcon: Icon(Icons.search),
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(50))),
                     hintText: "search here",
                     hintStyle: TextStyle(color: Colors.black26)),
               ),
+            ),
 
-              ),
+            // Container(
+            //   height: 200,
+            //   width: 200,
+            //   child: Card(
+            //     child: ListTile(
+            //       title: Text(""),
+            //     ),
+            //     elevation: 10,
+            //     shadowColor: Colors.grey,
+            //     margin: EdgeInsets.all(0),
+            //     shape:  OutlineInputBorder(
+            //         borderRadius: BorderRadius.circular(10),
+            //         borderSide: BorderSide(color: Colors.white, width: 1)
+            //     ),
+            //   ),
+            // )
 
-            Container(
-              height: 200,
-              width: 200,
-              child: Card(
-                child: ListTile(
-                  title: Text(""),
-                ),
-                elevation: 10,
-                shadowColor: Colors.grey,
-                margin: EdgeInsets.all(0),
-                shape:  OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(color: Colors.white, width: 1)
-                ),
-              ),
-            )
-
-
-
+            GridView.count(
+              shrinkWrap: true,
+              crossAxisCount: 2,
+              children: List.generate(plist.length, (index) {
+                return Card(
+                  child: Column(
+                    children: [
+                      Image.network(plist[index].imagesUri.replaceAll('http://localhost:8081', host)),
+                      Text(plist[index].productName),
+                      Text(plist[index].price.toString()),
+                    ],
+                  ),
+                ); //robohash.org api provide you different images for any number you are giving
+              }),
+            ),
           ],
         ),
-
-
-
-
-
-
-
-
-
       ),
     );
   }

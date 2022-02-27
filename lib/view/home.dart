@@ -18,6 +18,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        iconTheme: IconThemeData(color: Colors.grey),
         backgroundColor: Colors.white,
         elevation: 0,
         // leading: IconButton(
@@ -43,29 +44,12 @@ class _HomePageState extends State<HomePage> {
             icon: SvgPicture.asset("assets/icons/bell.svg",
                 color: Colors.black45),
             onPressed: () {
-              getAllProduct().then((res) {
 
-
-                Map<String,dynamic> map = jsonDecode(res.body);
-                print(map['statusCode']);
-
-                if(map['statusCode'] == 200){
-                print("good");
-
-
-                }else{
-
-                }
-
-
-              }
-              );
             },
           )
         ],
       ),
       drawer: Drawer(
-
 
         child: ListView(
           padding: EdgeInsets.zero,

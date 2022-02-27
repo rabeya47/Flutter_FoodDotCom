@@ -9,6 +9,7 @@ import 'package:http/http.dart' as http;
 var signupApi = host+'/user/save';
 var signinApi = host+'/user/login';
 var getAllProductApi = host+'/product/getAll';
+var fideByCategoryIdApi = host+ '/product/category/{categoryId}';
 
 Map<String, String> requestHeaders = {
   'Content-type': 'application/json',
@@ -45,3 +46,23 @@ Future<http.Response> getAllProduct() async {
 
 }
 
+
+
+
+
+Future<http.Response> fideByCategoryIdOne() async {
+  final response = await http
+      .get(Uri.parse(fideByCategoryIdApi+'1'));
+  return  response;
+
+}
+
+
+
+
+Future<http.Response> fideByCategoryIdTwo() async {
+  final response = await http
+      .get(Uri.parse(fideByCategoryIdApi+'2'));
+  return  response;
+
+}
