@@ -92,20 +92,49 @@ class _FastFoodState extends State<FastFood> {
             // )
 
             GridView.count(
-              shrinkWrap: true,
-              crossAxisCount: 2,
-              children: List.generate(plist.length, (index) {
-                return Card(
-                  child: Column(
-                    children: [
-                      Image.network(plist[index].imagesUri.replaceAll('http://localhost:8081', host)),
-                      Text(plist[index].productName),
-                      Text(plist[index].price.toString()),
-                    ],
-                  ),
-                ); //robohash.org api provide you different images for any number you are giving
-              }),
-            ),
+                physics: ScrollPhysics(),
+                shrinkWrap: true,
+                crossAxisCount: 2,
+                children: List.generate(plist.length, (index) {
+                  return GestureDetector(
+
+                    child: Card(
+                      // elevation: 10.0,
+                      // shape: new RoundedRectangleBorder(
+                      //   borderRadius: new BorderRadius.circular(20.0)
+                      // ),
+
+
+                      child: Column(
+                        children: [
+
+                          Image.network(plist[index].imagesUri.replaceAll('http://localhost:8081', host),
+                          width: 150,
+                          height: 150,
+                          fit: BoxFit.cover,
+
+                          ),
+                          // GridTile(
+                          //   child: GridTileBar(
+                          //     backgroundColor: Colors.black12,
+                          //
+                          //     title: Text(plist[index].productName) ,
+                          //     subtitle:Text(plist[index].price.toString())
+                          //   ),
+                          // ),
+                          Text(plist[index].productName),
+                          Text(plist[index].price.toString()),
+
+                        ],
+                      ),
+                    ),
+                    onTap: (){
+                      Navigator.pushNamed(context, 'prodetiles');
+                    },
+                  ); //robohash.org api provide you different images for any number you are giving
+                }),
+              ),
+
           ],
         ),
       ),

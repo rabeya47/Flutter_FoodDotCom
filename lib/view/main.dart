@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_food_dot_com/view/login.dart';
+import 'package:flutter_food_dot_com/view/product_detiles.dart';
 import 'package:flutter_food_dot_com/view/register.dart';
 
 import 'fast_food.dart';
@@ -20,6 +21,7 @@ void main() {
       'homepage': (context) => HomePage(),
       'fastfood' : (context) => FastFood(),
       'groceries' : (context) => Groceries(),
+      'prodetiles' : (context) => ProductDetiles(),
     },
   ));
 }
