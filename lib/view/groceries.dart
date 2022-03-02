@@ -115,7 +115,7 @@ class _GroceriesState extends State<Groceries> {
                     ),
                   ),
                   onTap: (){
-                    Navigator.pushNamed(context, 'prodetiles');
+                    Navigator.pushNamed(context, 'prodetiles',arguments: plist[index].id);
                   },
                 ); //robohash.org api provide you different images for any number you are giving
               }),

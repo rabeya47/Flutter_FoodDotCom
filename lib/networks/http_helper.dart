@@ -3,8 +3,8 @@ import 'dart:convert';
 import 'package:flutter_food_dot_com/Model/user.dart';
 import 'package:flutter_food_dot_com/model/product.dart';
 import 'package:http/http.dart' as http;
-var host = 'http://192.168.1.22:8081';       //TSP
-//var host = 'http://192.168.1.107:8081';    //home
+//var host = 'http://192.168.1.22:8081';       //TSP
+var host = 'http://192.168.1.107:8081';    //home
 //var host = 'http://localhost:8081';        //crome
 var signupApi = host+'/user/save';
 var signinApi = host+'/user/login';
