@@ -108,8 +108,8 @@ class _GroceriesState extends State<Groceries> {
                         //     subtitle:Text(plist[index].price.toString())
                         //   ),
                         // ),
-                        Text(plist[index].productName),
-                        Text(plist[index].price.toString()),
+                        Text(plist[index].productName, style: TextStyle(color: Colors.black,fontSize: 15,fontWeight: FontWeight.bold),),
+                        Text(plist[index].price.toString()+'TK', style: TextStyle(color: Colors.green,fontSize: 15,fontWeight: FontWeight.bold), ),
 
                       ],
                     ),

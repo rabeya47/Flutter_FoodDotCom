@@ -15,6 +15,7 @@ class FastFood extends StatefulWidget {
 class _FastFoodState extends State<FastFood> {
   List<Product> plist = [];
   @override
+
   void initState() {
     fideByCategoryIdTwo().then((res) {
       Map<String, dynamic> map = jsonDecode(res.body);
@@ -122,14 +123,14 @@ class _FastFoodState extends State<FastFood> {
                           //     subtitle:Text(plist[index].price.toString())
                           //   ),
                           // ),
-                          Text(plist[index].productName),
-                          Text(plist[index].price.toString()),
+                          Text(plist[index].productName, style: TextStyle(color: Colors.black,fontSize: 15,fontWeight: FontWeight.bold),),
+                          Text(plist[index].price.toString()+'TK', style: TextStyle(color: Colors.green,fontSize: 15,fontWeight: FontWeight.bold), ),
 
                         ],
                       ),
                     ),
                     onTap: (){
-                      Navigator.pushNamed(context, 'prodetiles');
+                      Navigator.pushNamed(context, 'prodetiles',arguments: plist[index].id);
                     },
                   ); //robohash.org api provide you different images for any number you are giving
                 }),
