@@ -69,7 +69,7 @@ Product product = Product(id: 0, productName: "", quantity: 0, price: 0, remarks
         // ),
 
         Padding(
-           padding:const EdgeInsets.only(right: 40.0, left: 40.0),
+           padding:const EdgeInsets.only(right: 0.0, left: 0.0),
          // padding: EdgeInsets.only(top: 10.0, bottom: 10.0),
           child: Container(
             margin: EdgeInsets.only(bottom: 15),
@@ -112,7 +112,7 @@ Product product = Product(id: 0, productName: "", quantity: 0, price: 0, remarks
             height: 345,
             decoration: BoxDecoration(
 
-              color: Colors.cyan[100],
+              color: Colors.white12, //box color
               borderRadius: BorderRadius.only(
                 topRight: Radius.circular(40.0),
                 topLeft: Radius.circular(40.0),
@@ -130,38 +130,74 @@ Product product = Product(id: 0, productName: "", quantity: 0, price: 0, remarks
             child: Column(
 
              children: [
-               Row(
-                 children: [
-                   Padding(padding: const EdgeInsets.only(top: 80.0, left: 40.0),),
-                   Text("Item: "+product.productName,
-                     style: TextStyle(fontSize: 20, letterSpacing: 0.5,),
+               Padding(
+                 padding: const EdgeInsets.only(left: 30.0, top: 15.0),
+                 child: Row(
+                   children: [
+                     Text("Item: "+product.productName,
+                       style: TextStyle(fontSize: 20, letterSpacing: 0.5,fontWeight: FontWeight.bold,color: Colors.deepPurple),
+                     ),
+                   ],
+                 ),
+               ),
+               Padding(
+                 padding: const EdgeInsets.only(left: 30.0,top: 5.0),
+                 child: Row(
+                   children: [
+                     Column(
+                       children: [
+                         Text("Price: "+product.price.toString()+"TK",
+                           style: TextStyle(fontSize: 20, letterSpacing: 0.5,fontWeight: FontWeight.bold,color: Colors.deepPurple),
+                         ),
+
+                       ],
                    ),
-                 ],
+                     Column(
+                       children: [
+                         IconButton(
+                                 icon: SvgPicture.asset("assets/icons/like.svg",color: Colors.cyan,),
+                                  onPressed: () {
+                                  // Navigator.pushNamed(context, 'homepage');
+                              },
+                         )
+                       ],
+
+                     )
+                   ],
+
+
+
+                 ),
+
                ),
 
-               Row(
-                 children: [
 
-                   Padding(padding:const EdgeInsets.only(left: 40.0),),
-                   Text("Price: "+product.price.toString()+"TK",
-                     style: TextStyle(fontSize: 20),
-                   ),
-                 ],
-               ),
 
 
                Column(
 
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisSize: MainAxisSize.min,
+
+
                  children: <Widget>[
-                   // Padding(padding:const EdgeInsets.only(left: 40.0),),
-                   const Text('This  product is leading and most populer ' , style: TextStyle(fontSize: 18),),
-                   const Text('snack prepared with combination of good matireals', style: TextStyle(fontSize: 18)),
+                   Padding(
+                     padding: const EdgeInsets.only(left: 30.0, top: 20.0),
+                     child: const Text('This  product is leading and most populer snack prepared with combination of good matireals. About us. For us, its not just about bringing you good food from your favourite restaurants. Its about making a connection, which is why we sit down ' , style: TextStyle(fontSize: 18),),
+                   ),
+
 
 
                  ],
+               ),
+
+               ElevatedButton(
+                 style: ElevatedButton.styleFrom(
+                   primary: Colors.amber, // background
+                   onPrimary: Colors.deepPurple, // foreground
+                 ),
+                 onPressed: () { },
+                 child: Text('Add To Card',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18.0),),
                )
+
              ],
             ),
 

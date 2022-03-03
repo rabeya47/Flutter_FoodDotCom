@@ -72,8 +72,8 @@ class _HomePageState extends State<HomePage> {
             ),
             ListTile(
               leading: Icon(Icons.verified_user),
-              title: Text('Profile'),
-              onTap: () => {Navigator.of(context).pop()},
+              title: Text('Register'),
+              onTap: () => {Navigator.pushNamed(context, 'register')},
             ),
             ListTile(
               leading: Icon(Icons.settings),
