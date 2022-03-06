@@ -160,9 +160,14 @@ class _HomePageState extends State<HomePage> {
                  ],
 
                ),
+
+
                child: Image(
 
                  image:  AssetImage('assets/images/fastfood.jpg'), fit: BoxFit.cover),
+
+
+
 
 
                ),

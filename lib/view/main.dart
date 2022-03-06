@@ -1,8 +1,11 @@
+
+
 import 'package:flutter/material.dart';
 import 'package:flutter_food_dot_com/view/login.dart';
-import 'package:flutter_food_dot_com/view/product_detiles.dart';
+import 'package:flutter_food_dot_com/view/product_details.dart';
 import 'package:flutter_food_dot_com/view/register.dart';
 
+import 'add_card.dart';
 import 'fast_food.dart';
 import 'groceries.dart';
 import 'home.dart';
@@ -18,7 +21,8 @@ void main() {
       'homepage': (context) => HomePage(),
       'fastfood': (context) => FastFood(),
       'groceries': (context) => Groceries(),
-      'prodetiles': (context) => ProductDetiles(),
+      'prodetails': (context) => ProductDetiles(),
+      'addcard': (context) => AddCard(),
     },
   ));
 }

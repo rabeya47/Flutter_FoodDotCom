@@ -17,6 +17,8 @@ class _ProductDetilesState extends State<ProductDetiles> {
 bool loaded = false;
 Product product = Product(id: 0, productName: "", quantity: 0, price: 0, remarks: "", images: "", imagesUri: "", categoryId: 0);
 
+bool buttonSelected = false;
+
   @override
   Widget build(BuildContext context) {
 
@@ -155,9 +157,12 @@ Product product = Product(id: 0, productName: "", quantity: 0, price: 0, remarks
                      Column(
                        children: [
                          IconButton(
-                                 icon: SvgPicture.asset("assets/icons/like.svg",color: Colors.cyan,),
+                                 icon: SvgPicture.asset("assets/icons/like.svg",color:buttonSelected == true? Colors.red : Colors.cyan,),
                                   onPressed: () {
-                                  // Navigator.pushNamed(context, 'homepage');
+                                    // Navigator.pushNamed(context, 'homepage');
+                                    setState(() {
+                                          buttonSelected = true;
+                                    });
                               },
                          )
                        ],
@@ -194,7 +199,9 @@ Product product = Product(id: 0, productName: "", quantity: 0, price: 0, remarks
                    primary: Colors.amber, // background
                    onPrimary: Colors.deepPurple, // foreground
                  ),
-                 onPressed: () { },
+                 onPressed: () {
+                   Navigator.pushNamed(context, 'addcard',arguments: product.id);
+                 },
                  child: Text('Add To Card',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18.0),),
                )
 
