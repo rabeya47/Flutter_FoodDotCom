@@ -18,7 +18,7 @@ bool loaded = false;
 Product product = Product(id: 0, productName: "", quantity: 0, price: 0, remarks: "", images: "", imagesUri: "", categoryId: 0);
 
 bool buttonSelected = false;
-
+int _itemCount = 1;
   @override
   Widget build(BuildContext context) {
 
@@ -81,7 +81,7 @@ bool buttonSelected = false;
             decoration: BoxDecoration(
 
               color: Colors.lightBlueAccent,
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(0),
               boxShadow: [
                 BoxShadow(
                   offset: Offset(0,4),
@@ -159,7 +159,7 @@ bool buttonSelected = false;
                          IconButton(
                                  icon: SvgPicture.asset("assets/icons/like.svg",color:buttonSelected == true? Colors.red : Colors.cyan,),
                                   onPressed: () {
-                                    // Navigator.pushNamed(context, 'homepage');
+
                                     setState(() {
                                           buttonSelected = true;
                                     });
@@ -167,6 +167,21 @@ bool buttonSelected = false;
                          )
                        ],
 
+                     ),
+
+                     Container(
+                       padding: EdgeInsets.all(3),
+                       decoration: BoxDecoration(
+                           borderRadius: BorderRadius.circular(5),
+                           color: Colors.amber),
+                       child: Row(
+                         children: <Widget>[
+                           _itemCount!=0? new  IconButton(icon: new Icon(Icons.remove),onPressed: ()=>setState(()=>_itemCount--),):new Container(),
+                           new Text(_itemCount.toString()),
+                           new IconButton(icon: new Icon(Icons.add),onPressed: ()=>setState(()=>_itemCount++))
+                         ],
+
+                       ),
                      )
                    ],
 
@@ -194,15 +209,19 @@ bool buttonSelected = false;
                  ],
                ),
 
+               Padding( padding: EdgeInsets.all(8),), //Space
+
                ElevatedButton(
+
                  style: ElevatedButton.styleFrom(
                    primary: Colors.amber, // background
                    onPrimary: Colors.deepPurple, // foreground
                  ),
                  onPressed: () {
-                   Navigator.pushNamed(context, 'addcard',arguments: product.id);
+                  // Navigator.pushNamed(context, 'addcard',arguments: product.id);
+                   Navigator.pushNamed(context, 'addcard');
                  },
-                 child: Text('Add To Card',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18.0),),
+                 child: Text('Add To Card',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20.0),),
                )
 
              ],

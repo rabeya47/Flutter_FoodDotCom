@@ -13,26 +13,26 @@ class AddCard extends StatefulWidget {
 }
 
 class _AddCardState extends State<AddCard> {
-  bool loaded = false;
-  Product product = Product(id: 0, productName: "", quantity: 0, price: 0, remarks: "", images: "", imagesUri: "", categoryId: 0);
+  // bool loaded = false;
+  // Product product = Product(id: 0, productName: "", quantity: 0, price: 0, remarks: "", images: "", imagesUri: "", categoryId: 0);
   int _currentIndex = 0;
 
   @override
   Widget build(BuildContext context) {
 
-    final args = ModalRoute.of(context)!.settings.arguments;
-    if(!loaded){
-      productShowById(args.toString()).then((res) {
-        loaded = true;
-        Map<String, dynamic> map = jsonDecode(res.body);
-
-        print(map);
-        setState(() {
-          product =  Product.fromMap(map['data'] );
-        });
-
-      });
-    }
+    // final args = ModalRoute.of(context)!.settings.arguments;
+    // if(!loaded){
+    //   productShowById(args.toString()).then((res) {
+    //     loaded = true;
+    //     Map<String, dynamic> map = jsonDecode(res.body);
+    //
+    //     print(map);
+    //     setState(() {
+    //       product =  Product.fromMap(map['data'] );
+    //     });
+    //
+    //   });
+    // }
 
 
 
@@ -55,7 +55,7 @@ class _AddCardState extends State<AddCard> {
                 .subtitle1
                 ?.copyWith(fontWeight: FontWeight.bold),
             children: [
-              TextSpan(text: "cart" +product.id.toString(), style: TextStyle(color: Colors.cyan)),
+              TextSpan(text: "cart" , style: TextStyle(color: Colors.cyan)),
 
             ],
           ),
