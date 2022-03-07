@@ -18,12 +18,12 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        iconTheme: IconThemeData(color: Colors.grey),
+        iconTheme: IconThemeData(color: Colors.cyan),
         backgroundColor: Colors.white,
         elevation: 0,
         // leading: IconButton(
         //   icon:
-        //       SvgPicture.asset("assets/icons/menu.svg", color: Colors.black45),
+        //       SvgPicture.asset("assets/icons/menu.svg"),
         //    onPressed: () {},
         // ),
         title: RichText(
@@ -41,8 +41,8 @@ class _HomePageState extends State<HomePage> {
         ),
         actions: <Widget>[
           IconButton(
-            icon: SvgPicture.asset("assets/icons/bell.svg",
-                color: Colors.black45),
+            icon: SvgPicture.asset("assets/icons/cart.svg",
+                ),
             onPressed: () {
 
             },

@@ -45,7 +45,7 @@ bool buttonSelected = false;
         leading: IconButton(
           icon: SvgPicture.asset("assets/icons/back.svg"),
           onPressed: () {
-            Navigator.pushNamed(context, 'homepage');
+            Navigator.pop(context, '');
           },
         ),
         title: RichText(
