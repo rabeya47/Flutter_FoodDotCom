@@ -5,7 +5,7 @@ import 'package:flutter_food_dot_com/view/login.dart';
 import 'package:flutter_food_dot_com/view/product_details.dart';
 import 'package:flutter_food_dot_com/view/register.dart';
 
-import 'add_card.dart';
+import 'show_cart.dart';
 import 'fast_food.dart';
 import 'groceries.dart';
 import 'home.dart';
@@ -22,7 +22,7 @@ void main() {
       'fastfood': (context) => FastFood(),
       'groceries': (context) => Groceries(),
       'prodetails': (context) => ProductDetiles(),
-      'addcard': (context) => AddCard(),
+      'showcart': (context) => AddCard(),
     },
   ));
 }

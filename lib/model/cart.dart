@@ -8,7 +8,7 @@ class Cart{
   String productName;
   int quantity;
   double price;
-  double total;
+  String imageUri;
 
 //<editor-fold desc="Data Methods">
 
@@ -17,7 +17,7 @@ class Cart{
     required this.productName,
     required this.quantity,
     required this.price,
-    required this.total,
+    required this.imageUri,
   });
 
   @override
@@ -29,7 +29,7 @@ class Cart{
           productName == other.productName &&
           quantity == other.quantity &&
           price == other.price &&
-          total == other.total);
+          imageUri == other.imageUri);
 
   @override
   int get hashCode =>
@@ -37,7 +37,7 @@ class Cart{
       productName.hashCode ^
       quantity.hashCode ^
       price.hashCode ^
-      total.hashCode;
+      imageUri.hashCode;
 
   @override
   String toString() {
@@ -46,7 +46,7 @@ class Cart{
         ' productName: $productName,' +
         ' quantity: $quantity,' +
         ' price: $price,' +
-        ' total: $total,' +
+        ' imageUri: $imageUri,' +
         '}';
   }
 
@@ -55,14 +55,14 @@ class Cart{
     String? productName,
     int? quantity,
     double? price,
-    double? total,
+    String? imageUri,
   }) {
     return Cart(
       id: id ?? this.id,
       productName: productName ?? this.productName,
       quantity: quantity ?? this.quantity,
       price: price ?? this.price,
-      total: total ?? this.total,
+      imageUri: imageUri ?? this.imageUri,
     );
   }
 
@@ -72,7 +72,7 @@ class Cart{
       'productName': this.productName,
       'quantity': this.quantity,
       'price': this.price,
-      'total': this.total,
+      'imageUri': this.imageUri,
     };
   }
 
@@ -82,7 +82,7 @@ class Cart{
       productName: map['productName'] as String,
       quantity: map['quantity'] as int,
       price: map['price'] as double,
-      total: map['total'] as double,
+      imageUri: map['imageUri'] as String,
     );
   }
 

@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter_food_dot_com/Model/user.dart';
+import 'package:flutter_food_dot_com/model/cart.dart';
 import 'package:flutter_food_dot_com/model/product.dart';
 import 'package:http/http.dart' as http;
 
@@ -13,7 +14,8 @@ var signinApi = host+'/user/login';
 var getAllProductApi = host+'/product/getAll';
 var fideByCategoryIdApi = host+ '/product/category/';
 var getProductById = host+'/product/findById/';
-
+var addToCart = host+'/addCart_withfile';
+var cartGetAll = host + '/cart/getAll';
 
 
 
@@ -79,6 +81,32 @@ Future<http.Response> fideByCategoryIdOne() async {
 Future<http.Response> productShowById(String id) async {
   final response = await http
       .get(Uri.parse(getProductById + id));
+  return  response;
+
+}
+
+
+
+
+
+Future<http.Response> saveCart(Cart cart) async {
+
+
+  final response = await http
+      .post(Uri.parse(addToCart),headers: requestHeaders,body: jsonEncode(cart.toMap()));
+  return  response;
+
+
+}
+
+
+
+
+
+
+Future<http.Response> getAllCart() async {
+  final response = await http
+      .get(Uri.parse(cartGetAll));
   return  response;
 
 }

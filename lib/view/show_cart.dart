@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_food_dot_com/model/product.dart';
+import 'package:flutter_food_dot_com/model/cart.dart';
 import 'package:flutter_food_dot_com/networks/http_helper.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -13,29 +13,26 @@ class AddCard extends StatefulWidget {
 }
 
 class _AddCardState extends State<AddCard> {
-  // bool loaded = false;
-  // Product product = Product(id: 0, productName: "", quantity: 0, price: 0, remarks: "", images: "", imagesUri: "", categoryId: 0);
   int _currentIndex = 0;
+
+  List<Cart> plist = [];
+  @override
+
+  void initState() {
+    getAllCart().then((res) {
+      Map<String, dynamic> map = jsonDecode(res.body);
+      var data = map['data'] as List<dynamic>;
+      plist = data.map((e) => Cart.fromMap(e)).toList();
+      print(plist);
+      setState(() {
+
+      });
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
-
-    // final args = ModalRoute.of(context)!.settings.arguments;
-    // if(!loaded){
-    //   productShowById(args.toString()).then((res) {
-    //     loaded = true;
-    //     Map<String, dynamic> map = jsonDecode(res.body);
-    //
-    //     print(map);
-    //     setState(() {
-    //       product =  Product.fromMap(map['data'] );
-    //     });
-    //
-    //   });
-    // }
-
-
-
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -55,7 +52,7 @@ class _AddCardState extends State<AddCard> {
                 .subtitle1
                 ?.copyWith(fontWeight: FontWeight.bold),
             children: [
-              TextSpan(text: "cart" , style: TextStyle(color: Colors.cyan)),
+              TextSpan(text: "cart", style: TextStyle(color: Colors.cyan)),
 
             ],
           ),
@@ -63,7 +60,27 @@ class _AddCardState extends State<AddCard> {
 
       ),
 
-      body: Column(),
+      body: Column(
+
+        children: [
+          ListView.builder(
+            itemBuilder: (BuildContext, index){
+              return Card(
+                elevation: 2.0,
+                child: ListTile(
+                 // leading: CircleAvatar(backgroundImage: AssetImage(plist[index].imageUri.replaceAll('http://localhost:8081', host)),),
+                  title: Text(plist[index].productName +' ' + plist[index].quantity.toString()+'Pices'),
+                  subtitle: Text(plist[index].price.toString()),
+                ),
+              );
+            },
+             itemCount: plist.length,
+            shrinkWrap: true,
+            padding: EdgeInsets.all(5),
+            scrollDirection: Axis.vertical,
+          ),
+        ],
+      ),
 
 
 

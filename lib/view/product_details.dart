@@ -2,6 +2,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_food_dot_com/model/cart.dart';
 import 'package:flutter_food_dot_com/model/product.dart';
 import 'package:flutter_food_dot_com/networks/http_helper.dart';
 import 'package:flutter_svg/svg.dart';
@@ -218,8 +219,51 @@ int _itemCount = 1;
                    onPrimary: Colors.deepPurple, // foreground
                  ),
                  onPressed: () {
-                  // Navigator.pushNamed(context, 'addcard',arguments: product.id);
-                   Navigator.pushNamed(context, 'addcard');
+                  // Navigator.pushNamed(context, 'showcart',arguments: product.id);
+                   Navigator.pushNamed(context, 'showcart');
+
+                  String imageUri = product.imagesUri.toString();
+                  String productName = product.productName;
+                  double price = product.price * _itemCount;
+                  print(_itemCount);
+                  int quantity =  _itemCount;
+
+
+                  Cart cart =new Cart(
+
+                      productName : productName,
+                      imageUri: imageUri,
+                      quantity: quantity,
+                      price: price,
+                      id: 0,
+
+                  );
+
+                  print(cart);
+
+                   saveCart(cart).then((res) {
+
+
+                     Map<String,dynamic> map = jsonDecode(res.body);
+                     print(map['statusCode']);
+
+                     if(map['statusCode'] == 200){
+                       SnackBar snackBar = SnackBar(
+                         content: Text('Add to cart Successfull'),
+                       );
+                       ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                       Navigator.pushNamed(context, 'showcart');
+
+                     }else{
+                       SnackBar snackBar = SnackBar(
+                         content: Text('Add to cartfailed'),
+                       );
+                       ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                     }
+
+
+                   });
+
                  },
                  child: Text('Add To Card',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20.0),),
                )
