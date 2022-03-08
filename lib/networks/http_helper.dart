@@ -16,6 +16,7 @@ var fideByCategoryIdApi = host+ '/product/category/';
 var getProductById = host+'/product/findById/';
 var addToCart = host+'/addCart_withfile';
 var cartGetAll = host + '/cart/getAll';
+var deleteCart = host + '/cart/delete/';
 
 
 
@@ -107,6 +108,14 @@ Future<http.Response> saveCart(Cart cart) async {
 Future<http.Response> getAllCart() async {
   final response = await http
       .get(Uri.parse(cartGetAll));
+  return  response;
+
+}
+
+
+Future<http.Response> deleteCartById(int index) async {
+  final response = await http
+      .get(Uri.parse(deleteCart+index.toString()));
   return  response;
 
 }

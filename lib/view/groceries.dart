@@ -56,7 +56,9 @@ class _GroceriesState extends State<Groceries> {
         actions: <Widget>[
           IconButton(
             icon: SvgPicture.asset("assets/icons/cart.svg"),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushNamed(context, 'showcart');
+            },
           )
         ],
       ),

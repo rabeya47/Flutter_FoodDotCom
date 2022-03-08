@@ -44,7 +44,7 @@ class _HomePageState extends State<HomePage> {
             icon: SvgPicture.asset("assets/icons/cart.svg",
                 ),
             onPressed: () {
-
+              Navigator.pushNamed(context, 'showcart');
             },
           )
         ],

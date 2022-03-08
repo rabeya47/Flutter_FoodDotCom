@@ -15,21 +15,27 @@ class AddCard extends StatefulWidget {
 class _AddCardState extends State<AddCard> {
   int _currentIndex = 0;
 
-  List<Cart> plist = [];
+  List<Cart> cartList = [];
   @override
 
   void initState() {
     getAllCart().then((res) {
       Map<String, dynamic> map = jsonDecode(res.body);
       var data = map['data'] as List<dynamic>;
-      plist = data.map((e) => Cart.fromMap(e)).toList();
-      print(plist);
+      cartList = data.map((e) => Cart.fromMap(e)).toList();
+      // print(cartList);
+
       setState(() {
 
       });
     });
     super.initState();
+
   }
+
+
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -68,13 +74,26 @@ class _AddCardState extends State<AddCard> {
               return Card(
                 elevation: 2.0,
                 child: ListTile(
-                 // leading: CircleAvatar(backgroundImage: AssetImage(plist[index].imageUri.replaceAll('http://localhost:8081', host)),),
-                  title: Text(plist[index].productName +' ' + plist[index].quantity.toString()+'Pices'),
-                  subtitle: Text(plist[index].price.toString()),
+                // leading: CircleAvatar(backgroundImage: AssetImage(plist[index].imageUri.replaceAll('http://localhost:8081', host)),),
+                 leading: Image.network(cartList[index].imageUri.replaceAll('http://localhost:8081', host)),
+                  title: Text(cartList[index].productName +' ' + cartList[index].quantity.toString()+'p'),
+                  subtitle: Text(cartList[index].price.toString()+' TK'),
+
+                  trailing:  IconButton(
+                    //Icons.remove_circle,
+                   // color: Colors.red,
+                    icon: Icon(Icons.remove_circle,color: Colors.amber,),
+                    onPressed: (){
+                      deleteCartById(cartList[index].id);
+                      print(cartList[index].id);
+                    },
+
+                  ),
+
                 ),
               );
             },
-             itemCount: plist.length,
+             itemCount: cartList.length,
             shrinkWrap: true,
             padding: EdgeInsets.all(5),
             scrollDirection: Axis.vertical,

@@ -56,7 +56,9 @@ class _FastFoodState extends State<FastFood> {
         actions: <Widget>[
           IconButton(
             icon: SvgPicture.asset("assets/icons/cart.svg"),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushNamed(context, 'showcart');
+            },
           )
         ],
       ),

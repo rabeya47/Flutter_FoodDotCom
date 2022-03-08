@@ -220,7 +220,7 @@ int _itemCount = 1;
                  ),
                  onPressed: () {
                   // Navigator.pushNamed(context, 'showcart',arguments: product.id);
-                   Navigator.pushNamed(context, 'showcart');
+                   //Navigator.pushNamed(context, 'showcart');
 
                   String imageUri = product.imagesUri.toString();
                   String productName = product.productName;
@@ -257,6 +257,7 @@ int _itemCount = 1;
                      }else{
                        SnackBar snackBar = SnackBar(
                          content: Text('Add to cartfailed'),
+
                        );
                        ScaffoldMessenger.of(context).showSnackBar(snackBar);
                      }
