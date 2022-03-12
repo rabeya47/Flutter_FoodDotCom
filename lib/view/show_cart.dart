@@ -14,6 +14,7 @@ class AddCard extends StatefulWidget {
 
 class _AddCardState extends State<AddCard> {
   int _currentIndex = 0;
+  double deliveryCharge = 60.0;
 
 
 
@@ -55,7 +56,6 @@ class _AddCardState extends State<AddCard> {
 
 
 
-
   @override
   Widget build(BuildContext context) {
 
@@ -89,24 +89,25 @@ class _AddCardState extends State<AddCard> {
         children: [
           Container(
             height: 420,
-            color: Colors.black12,
+            color: Colors.brown.shade100,
             child:Column(
               children: [
                 Expanded(
                   child: ListView.builder(
                     itemBuilder: (BuildContext, index){
                       return Card(
+                        color: Colors.brown.shade50,
                         elevation: 2.0,
                         child: ListTile(
                         // leading: CircleAvatar(backgroundImage: AssetImage(plist[index].imageUri.replaceAll('http://localhost:8081', host)),),
                          leading: Image.network(cartList[index].imageUri.replaceAll('http://localhost:8081', host)),
-                          title: Text(cartList[index].productName +' ' + cartList[index].quantity.toString()+'p'),
-                          subtitle: Text(cartList[index].price.toString()+' TK'),
+                          title: Text(cartList[index].productName +' ' + cartList[index].quantity.toString()+'p',style: TextStyle(fontWeight: FontWeight.bold),),
+                          subtitle: Text(cartList[index].price.toString()+' TK',style: TextStyle(fontWeight: FontWeight.bold),),
 
                           trailing:  IconButton(
                             //Icons.remove_circle,
                            // color: Colors.red,
-                            icon: Icon(Icons.remove_circle,color: Colors.amber,),
+                            icon: Icon(Icons.remove_circle,color: Colors.amber.shade900,),
                             onPressed: () async {
                               await deleteCartById(cartList[index].id);
                                showValue();
@@ -130,26 +131,28 @@ class _AddCardState extends State<AddCard> {
           ),
 
           Container(
+
             height: 180,
+            color: Colors.orange.shade200,
             child: Column(
              children: [
                Row(
                  children: [
                    Padding(
-                     padding: const EdgeInsets.only(left: 18.0,top: 12),
+                     padding: const EdgeInsets.only(left: 18.0,top: 20),
                      child: Column(
                        children: [
-                         Text("SubTotal")
+                         Text("Sub Total",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 16,),)
                        ],
                      ),
                    ),
                    Padding(
-                     padding: const EdgeInsets.only(left: 240.0,top: 12),
+                     padding: const EdgeInsets.only(left: 210.0,top: 12),
                      child: Column(
                        mainAxisAlignment: MainAxisAlignment.end,
                        crossAxisAlignment: CrossAxisAlignment.end,
                        children: [
-                         Text(subTotal.toString())
+                         Text(subTotal.toString(),style: TextStyle(fontWeight: FontWeight.bold,fontSize: 16),)
                        ],
                      ),
                    ),
@@ -162,7 +165,35 @@ class _AddCardState extends State<AddCard> {
                      padding: const EdgeInsets.only(left: 18.0,top: 12),
                      child: Column(
                        children: [
-                         Text("SubTotal")
+                         Text("Delivery Charge",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 16),)
+                       ],
+                     ),
+                   ),
+                   Padding(
+                     padding: const EdgeInsets.only(left: 180.0,top: 12),
+                     child: Column(
+                       mainAxisAlignment: MainAxisAlignment.end,
+                       crossAxisAlignment: CrossAxisAlignment.end,
+                       children: [
+                         Text(deliveryCharge.toString(),style: TextStyle(fontWeight: FontWeight.bold,fontSize: 16),)
+                       ],
+                     ),
+                   ),
+                 ],
+
+               ),
+
+               Divider(
+                 color: Colors.black,
+                 thickness: 1,
+               ),
+               Row(
+                 children: [
+                   Padding(
+                     padding: const EdgeInsets.only(left: 18.0,top: 12),
+                     child: Column(
+                       children: [
+                         Text("Total",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 16),)
                        ],
                      ),
                    ),
@@ -172,13 +203,14 @@ class _AddCardState extends State<AddCard> {
                        mainAxisAlignment: MainAxisAlignment.end,
                        crossAxisAlignment: CrossAxisAlignment.end,
                        children: [
-                         Text(subTotal.toString())
+                         Text((subTotal+deliveryCharge).toString()+" TK",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 16),)
                        ],
                      ),
                    ),
                  ],
 
                ),
+
              ],
             ),
 
