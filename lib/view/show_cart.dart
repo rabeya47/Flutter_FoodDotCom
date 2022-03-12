@@ -15,22 +15,41 @@ class AddCard extends StatefulWidget {
 class _AddCardState extends State<AddCard> {
   int _currentIndex = 0;
 
+
+
   List<Cart> cartList = [];
   @override
 
   void initState() {
-    getAllCart().then((res) {
+    showValue();
+    super.initState();
+
+  }
+
+  Future<void> showValue() async {
+
+      await getAllCart().then((res) {
       Map<String, dynamic> map = jsonDecode(res.body);
       var data = map['data'] as List<dynamic>;
       cartList = data.map((e) => Cart.fromMap(e)).toList();
       // print(cartList);
-
+      calculate();
       setState(() {
 
       });
-    });
-    super.initState();
 
+    });
+  }
+
+
+
+  double subTotal = 0.0;
+  void calculate(){
+    subTotal = 0.0;
+    for (var index = 0; index < cartList.length; index++) {
+      subTotal+= cartList[index].price;
+    }
+    print(subTotal);
   }
 
 
@@ -67,39 +86,121 @@ class _AddCardState extends State<AddCard> {
       ),
 
       body: Column(
-
         children: [
-          ListView.builder(
-            itemBuilder: (BuildContext, index){
-              return Card(
-                elevation: 2.0,
-                child: ListTile(
-                // leading: CircleAvatar(backgroundImage: AssetImage(plist[index].imageUri.replaceAll('http://localhost:8081', host)),),
-                 leading: Image.network(cartList[index].imageUri.replaceAll('http://localhost:8081', host)),
-                  title: Text(cartList[index].productName +' ' + cartList[index].quantity.toString()+'p'),
-                  subtitle: Text(cartList[index].price.toString()+' TK'),
+          Container(
+            height: 420,
+            color: Colors.black12,
+            child:Column(
+              children: [
+                Expanded(
+                  child: ListView.builder(
+                    itemBuilder: (BuildContext, index){
+                      return Card(
+                        elevation: 2.0,
+                        child: ListTile(
+                        // leading: CircleAvatar(backgroundImage: AssetImage(plist[index].imageUri.replaceAll('http://localhost:8081', host)),),
+                         leading: Image.network(cartList[index].imageUri.replaceAll('http://localhost:8081', host)),
+                          title: Text(cartList[index].productName +' ' + cartList[index].quantity.toString()+'p'),
+                          subtitle: Text(cartList[index].price.toString()+' TK'),
 
-                  trailing:  IconButton(
-                    //Icons.remove_circle,
-                   // color: Colors.red,
-                    icon: Icon(Icons.remove_circle,color: Colors.amber,),
-                    onPressed: (){
-                      deleteCartById(cartList[index].id);
-                      print(cartList[index].id);
+                          trailing:  IconButton(
+                            //Icons.remove_circle,
+                           // color: Colors.red,
+                            icon: Icon(Icons.remove_circle,color: Colors.amber,),
+                            onPressed: () async {
+                              await deleteCartById(cartList[index].id);
+                               showValue();
+                              print(cartList[index].id);
+                            },
+
+                          ),
+
+                        ),
+                      );
                     },
-
+                     itemCount: cartList.length,
+                    shrinkWrap: true,
+                    padding: EdgeInsets.all(5),
+                    scrollDirection: Axis.vertical,
                   ),
-
                 ),
-              );
-            },
-             itemCount: cartList.length,
-            shrinkWrap: true,
-            padding: EdgeInsets.all(5),
-            scrollDirection: Axis.vertical,
+              ],
+            ),
+
           ),
+
+          Container(
+            height: 180,
+            child: Column(
+             children: [
+               Row(
+                 children: [
+                   Padding(
+                     padding: const EdgeInsets.only(left: 18.0,top: 12),
+                     child: Column(
+                       children: [
+                         Text("SubTotal")
+                       ],
+                     ),
+                   ),
+                   Padding(
+                     padding: const EdgeInsets.only(left: 240.0,top: 12),
+                     child: Column(
+                       mainAxisAlignment: MainAxisAlignment.end,
+                       crossAxisAlignment: CrossAxisAlignment.end,
+                       children: [
+                         Text(subTotal.toString())
+                       ],
+                     ),
+                   ),
+                 ],
+
+               ),
+               Row(
+                 children: [
+                   Padding(
+                     padding: const EdgeInsets.only(left: 18.0,top: 12),
+                     child: Column(
+                       children: [
+                         Text("SubTotal")
+                       ],
+                     ),
+                   ),
+                   Padding(
+                     padding: const EdgeInsets.only(left: 240.0,top: 12),
+                     child: Column(
+                       mainAxisAlignment: MainAxisAlignment.end,
+                       crossAxisAlignment: CrossAxisAlignment.end,
+                       children: [
+                         Text(subTotal.toString())
+                       ],
+                     ),
+                   ),
+                 ],
+
+               ),
+             ],
+            ),
+
+
+
+
+
+
+
+
+          )
+
+
         ],
+
       ),
+
+
+
+
+
+
 
 
 
