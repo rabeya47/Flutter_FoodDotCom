@@ -66,8 +66,8 @@ class _HomePageState extends State<HomePage> {
                       image: AssetImage('assets/images/cover.jpg'))),
             ),
             ListTile(
-              leading: Icon(Icons.input),
-              title: Text('Welcome'),
+              leading: Icon(Icons.add_location_alt),
+              title: Text('Location'),
               onTap: () => {},
             ),
             ListTile(
