@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_food_dot_com/constants/routes.dart';
 import 'package:flutter_food_dot_com/model/cart.dart';
 import 'package:flutter_food_dot_com/networks/http_helper.dart';
 import 'package:flutter_svg/svg.dart';
@@ -67,7 +68,7 @@ class _AddCardState extends State<AddCard> {
         leading: IconButton(
           icon: SvgPicture.asset("assets/icons/back.svg"),
           onPressed: () {
-            Navigator.pop(context, 'prodetails');
+            Navigator.pop(context, Routes.prodetails);
           },
         ),
         title: RichText(
@@ -100,7 +101,7 @@ class _AddCardState extends State<AddCard> {
                         elevation: 2.0,
                         child: ListTile(
                         // leading: CircleAvatar(backgroundImage: AssetImage(plist[index].imageUri.replaceAll('http://localhost:8081', host)),),
-                         leading: Image.network(cartList[index].imageUri.replaceAll('http://localhost:8081', host)),
+                         leading: Image.network(cartList[index].imageUri.replaceAll('http://localhost:8081', host),height: 100,width: 90,),
                           title: Text(cartList[index].productName +' ' + cartList[index].quantity.toString()+'p',style: TextStyle(fontWeight: FontWeight.bold),),
                           subtitle: Text(cartList[index].price.toString()+' TK',style: TextStyle(fontWeight: FontWeight.bold),),
 
@@ -133,7 +134,7 @@ class _AddCardState extends State<AddCard> {
           Container(
 
             height: 180,
-            color: Colors.orange.shade200,
+            color: Colors.orange.shade50,
             child: Column(
              children: [
                Row(

@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_food_dot_com/constants/routes.dart';
 import 'package:flutter_food_dot_com/model/product.dart';
 import 'package:flutter_food_dot_com/networks/http_helper.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -44,7 +45,7 @@ class _HomePageState extends State<HomePage> {
             icon: SvgPicture.asset("assets/icons/cart.svg",
                 ),
             onPressed: () {
-              Navigator.pushNamed(context, 'showcart');
+              Navigator.pushNamed(context, Routes.showcart);
             },
           )
         ],
@@ -68,12 +69,12 @@ class _HomePageState extends State<HomePage> {
             ListTile(
               leading: Icon(Icons.add_location_alt),
               title: Text('Location'),
-              onTap: () => {},
+              onTap: () => {Navigator.pushNamed(context, Routes.map)},
             ),
             ListTile(
               leading: Icon(Icons.verified_user),
               title: Text('Register'),
-              onTap: () => {Navigator.pushNamed(context, 'register')},
+              onTap: () => {Navigator.pushNamed(context, Routes.register)},
             ),
             ListTile(
               leading: Icon(Icons.settings),
@@ -88,7 +89,7 @@ class _HomePageState extends State<HomePage> {
             ListTile(
               leading: Icon(Icons.exit_to_app),
               title: Text('Logout'),
-              onTap: () => {Navigator.pushNamed(context, 'login')},
+              onTap: () => {Navigator.pushNamed(context, Routes.login)},
             ),
           ],
         ),
@@ -142,7 +143,7 @@ class _HomePageState extends State<HomePage> {
 
            GestureDetector(
              onTap: () {
-               Navigator.pushNamed(context, 'fastfood');
+               Navigator.pushNamed(context, Routes.fastfood);
              },
              child: Container(
 
@@ -178,7 +179,7 @@ class _HomePageState extends State<HomePage> {
 
             GestureDetector(
               onTap: (){
-                Navigator.pushNamed(context, 'groceries');
+                Navigator.pushNamed(context, Routes.groceries);
               },
               child: Container(
                 margin: EdgeInsets.only(bottom: 15),

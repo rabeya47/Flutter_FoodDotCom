@@ -2,6 +2,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_food_dot_com/constants/routes.dart';
 import 'package:flutter_food_dot_com/model/cart.dart';
 import 'package:flutter_food_dot_com/model/product.dart';
 import 'package:flutter_food_dot_com/networks/http_helper.dart';
@@ -252,7 +253,7 @@ int _itemCount = 1;
                          content: Text('Add to cart Successfull'),
                        );
                        ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                       Navigator.pushNamed(context, 'showcart');
+                       Navigator.pushNamed(context, Routes.showcart);
 
                      }else{
                        SnackBar snackBar = SnackBar(

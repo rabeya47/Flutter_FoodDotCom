@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_food_dot_com/constants/routes.dart';
 import 'package:flutter_food_dot_com/model/product.dart';
 import 'package:flutter_food_dot_com/networks/http_helper.dart';
 import 'package:flutter_svg/svg.dart';
@@ -16,7 +17,12 @@ class _GroceriesState extends State<Groceries> {
   List<Product> plist = [];
   @override
   void initState() {
-    fideByCategoryIdOne().then((res) {
+    productView();
+    super.initState();
+  }
+
+  void productView() {
+      fideByCategoryIdOne().then((res) {
       Map<String, dynamic> map = jsonDecode(res.body);
       var data = map['data'] as List<dynamic>;
       plist = data.map((e) => Product.fromMap(e)).toList();
@@ -24,8 +30,27 @@ class _GroceriesState extends State<Groceries> {
 
       });
     });
-    super.initState();
   }
+
+
+
+  void search(String value){
+    searchProduct(value).then((res) {
+      Map<String, dynamic> map = jsonDecode(res.body);
+      var data = map['data'] as List<dynamic>;
+      plist = data.map((e) => Product.fromMap(e)).toList();
+
+      setState(() {
+
+      });
+    });
+  }
+
+
+
+
+
+
 
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,7 +61,7 @@ class _GroceriesState extends State<Groceries> {
           icon:
           SvgPicture.asset("assets/icons/back.svg"),
           onPressed: () {
-            Navigator.pushNamed(context, 'homepage');
+            Navigator.pushNamed(context, Routes.homepage);
           },
         ),
         title: RichText(
@@ -57,7 +82,7 @@ class _GroceriesState extends State<Groceries> {
           IconButton(
             icon: SvgPicture.asset("assets/icons/cart.svg"),
             onPressed: () {
-              Navigator.pushNamed(context, 'showcart');
+              Navigator.pushNamed(context, Routes.showcart);
             },
           )
         ],
@@ -68,7 +93,10 @@ class _GroceriesState extends State<Groceries> {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: TextField(
-                onChanged: (Value) {},
+                onChanged: (value)  {
+                  search(value);
+                  print(value);
+                },
                 decoration: InputDecoration(
                     prefixIcon: Icon(Icons.search),
                     border: OutlineInputBorder(
@@ -117,7 +145,7 @@ class _GroceriesState extends State<Groceries> {
                     ),
                   ),
                   onTap: (){
-                    Navigator.pushNamed(context, 'prodetails',arguments: plist[index].id);
+                    Navigator.pushNamed(context, Routes.prodetails,arguments: plist[index].id);
                   },
                 ); //robohash.org api provide you different images for any number you are giving
               }),

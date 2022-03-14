@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_food_dot_com/constants/routes.dart';
 import 'package:flutter_food_dot_com/model/product.dart';
 import 'package:flutter_food_dot_com/networks/http_helper.dart';
 import 'package:flutter_svg/svg.dart';
@@ -14,10 +15,16 @@ class FastFood extends StatefulWidget {
 
 class _FastFoodState extends State<FastFood> {
   List<Product> plist = [];
+
   @override
 
   void initState() {
-    fideByCategoryIdTwo().then((res) {
+    productView();
+       super.initState();
+  }
+
+  void productView() {
+       fideByCategoryIdTwo().then((res) {
       Map<String, dynamic> map = jsonDecode(res.body);
       var data = map['data'] as List<dynamic>;
       plist = data.map((e) => Product.fromMap(e)).toList();
@@ -26,8 +33,23 @@ class _FastFoodState extends State<FastFood> {
 
       });
     });
-    super.initState();
   }
+
+  void search(String value){
+    searchProduct(value).then((res) {
+      Map<String, dynamic> map = jsonDecode(res.body);
+      var data = map['data'] as List<dynamic>;
+      plist = data.map((e) => Product.fromMap(e)).toList();
+
+      setState(() {
+
+      });
+    });
+  }
+
+
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +60,7 @@ class _FastFoodState extends State<FastFood> {
         leading: IconButton(
           icon: SvgPicture.asset("assets/icons/back.svg"),
           onPressed: () {
-            Navigator.pushNamed(context, 'homepage');
+            Navigator.pushNamed(context, Routes.homepage);
           },
         ),
         title: RichText(
@@ -57,7 +79,7 @@ class _FastFoodState extends State<FastFood> {
           IconButton(
             icon: SvgPicture.asset("assets/icons/cart.svg"),
             onPressed: () {
-              Navigator.pushNamed(context, 'showcart');
+              Navigator.pushNamed(context, Routes.showcart);
             },
           )
         ],
@@ -68,7 +90,10 @@ class _FastFoodState extends State<FastFood> {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: TextField(
-                onChanged: (Value) {},
+                onChanged: (value)  {
+                search(value);
+                print(value);
+                },
                 decoration: InputDecoration(
                     prefixIcon: Icon(Icons.search),
                     border: OutlineInputBorder(
@@ -133,7 +158,7 @@ class _FastFoodState extends State<FastFood> {
                       ),
                     ),
                     onTap: (){
-                      Navigator.pushNamed(context, 'prodetails',arguments: plist[index].id);
+                      Navigator.pushNamed(context, Routes.prodetails,arguments: plist[index].id);
                     },
                   ); //robohash.org api provide you different images for any number you are giving
                 }),

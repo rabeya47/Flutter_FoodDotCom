@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_food_dot_com/Model/user.dart';
+import 'package:flutter_food_dot_com/constants/routes.dart';
 import 'package:flutter_food_dot_com/networks/http_helper.dart';
 
 class MyRegister extends StatefulWidget {
@@ -167,7 +168,7 @@ class _MyRegisterState extends State<MyRegister> {
                                             content: Text('Sign up Successfull'),
                                           );
                                           ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                                            Navigator.pushNamed(context, 'homepage');
+                                            Navigator.pushNamed(context, Routes.homepage);
 
                                         }else{
                                           SnackBar snackBar = SnackBar(
@@ -196,7 +197,7 @@ class _MyRegisterState extends State<MyRegister> {
                             children: [
                               TextButton(
                                 onPressed: () {
-                                  Navigator.pushNamed(context, 'login');
+                                  Navigator.pushNamed(context, Routes.login);
                                 },
 
                                 child: Text(

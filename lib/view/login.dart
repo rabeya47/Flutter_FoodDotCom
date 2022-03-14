@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_food_dot_com/Model/user.dart';
+import 'package:flutter_food_dot_com/constants/routes.dart';
 import 'package:flutter_food_dot_com/networks/http_helper.dart';
 import 'package:http/http.dart' as http;
 
@@ -116,7 +117,7 @@ class _MyLoginState extends State<MyLogin> {
                                             content: Text('Sign in Successfull'),
                                           );
                                           ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                                          Navigator.pushNamed(context, 'homepage');
+                                          Navigator.pushNamed(context, Routes.homepage);
 
                                         }else{
                                           SnackBar snackBar = SnackBar(
@@ -144,7 +145,7 @@ class _MyLoginState extends State<MyLogin> {
                             children: [
                               TextButton(
                                 onPressed: () {
-                                  Navigator.pushNamed(context, 'register'); //call register page
+                                  Navigator.pushNamed(context, Routes.register); //call register page
                                 },
                                 child: Text(
                                   'Sign Up',
