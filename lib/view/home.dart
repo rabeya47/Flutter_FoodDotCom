@@ -95,6 +95,7 @@ class _HomePageState extends State<HomePage> {
         ),
       )      ,
       body: SingleChildScrollView(
+
         child: Column(
           children: [
 
@@ -111,35 +112,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
 
-            // Expanded(
-            //   child: GridView.count(
-            //     // Create a grid with 2 columns. If you change the scrollDirection to
-            //     // horizontal, this produces 2 rows.
-            //     crossAxisCount: 2,
-            //     // Generate 100 widgets that display their index in the List.
-            //     children: List.generate(4, (index) {
-            //       return Card(
-            //         shape: RoundedRectangleBorder(
-            //           borderRadius: BorderRadius.circular(15.0),
-            //         ),
-            //         elevation: 4,
-            //         child: Column(
-            //           children: [
-            //             SizedBox(
-            //               height: 10,
-            //             ),
-            //
-            //             Text(
-            //               'Item $index',
-            //               style: Theme.of(context).textTheme.headline5,
-            //             ),
-            //
-            //           ],
-            //         ),
-            //       );
-            //     }),
-            //   ),
-            // ),
+
 
            GestureDetector(
              onTap: () {
@@ -150,6 +123,12 @@ class _HomePageState extends State<HomePage> {
                margin: EdgeInsets.only(bottom: 15),
                padding: EdgeInsets.all(25),
                decoration: BoxDecoration(
+                 gradient: LinearGradient(
+                   colors: [
+                      Colors.blue.withOpacity(0.2),
+                      Colors.purple.withOpacity(0.4)
+                   ],
+                 ),
                  color: Colors.white,
                  borderRadius: BorderRadius.circular(10),
                  boxShadow: [
@@ -163,11 +142,20 @@ class _HomePageState extends State<HomePage> {
                ),
 
 
-               child: Image(
+               child: Container(
+                 decoration: BoxDecoration(
+                   image: DecorationImage(
 
-                 image:  AssetImage('assets/images/fastfood.jpg'), fit: BoxFit.cover),
+                     image: AssetImage('assets/images/fastfood.jpg'),
+                     fit: BoxFit.cover,
+                     colorFilter: new ColorFilter.mode(Colors.black.withOpacity(0.2), BlendMode.dstATop),
 
+                   )
+                 ),
+                 child: Image(
 
+                   image:  AssetImage('assets/images/fastfood.jpg'), fit: BoxFit.cover),
+               ),
 
 
 
@@ -185,6 +173,12 @@ class _HomePageState extends State<HomePage> {
                 margin: EdgeInsets.only(bottom: 15),
                 padding: EdgeInsets.all(25),
                 decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [
+                      Colors.blue.withOpacity(0.2),
+                      Colors.purple.withOpacity(0.4)
+                    ],
+                  ),
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(10),
                   boxShadow: [
@@ -204,10 +198,43 @@ class _HomePageState extends State<HomePage> {
             ),
 
 
+            // Container(
+            //   margin: EdgeInsets.only(bottom: 15),
+            //   padding: EdgeInsets.all(25),
+            //   decoration: BoxDecoration(
+            //     gradient: LinearGradient(
+            //       colors: [
+            //         Colors.blue.withOpacity(0.2),
+            //         Colors.purple.withOpacity(0.6)
+            //       ],
+            //     ),
+            //     color: Colors.white,
+            //     borderRadius: BorderRadius.circular(10),
+            //     boxShadow: [
+            //       BoxShadow(
+            //         offset: Offset(0,4),
+            //         blurRadius: 20,
+            //         color: Color(0xFFB0CCE1).withOpacity(0.32),
+            //       ),
+            //     ],
+            //
+            //   ),
+            //   child: Image(
+            //       image:  AssetImage('assets/images/food_offer.jpg'), fit: BoxFit.cover),
+            //
+            //
+            // ),
+
             Container(
               margin: EdgeInsets.only(bottom: 15),
               padding: EdgeInsets.all(25),
               decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [
+                    Colors.blue.withOpacity(0.2),
+                    Colors.purple.withOpacity(0.4)
+                  ],
+                ),
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(10),
                 boxShadow: [
@@ -220,28 +247,15 @@ class _HomePageState extends State<HomePage> {
 
               ),
               child: Image(
-                  image:  AssetImage('assets/images/food_offer.jpg'), fit: BoxFit.cover),
 
-
-            ),
-
-            Container(
-              margin: EdgeInsets.only(bottom: 15),
-              padding: EdgeInsets.all(25),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(10),
-                boxShadow: [
-                  BoxShadow(
-                    offset: Offset(0,4),
-                    blurRadius: 20,
-                    color: Color(0xFFB0CCE1).withOpacity(0.32),
-                  ),
-                ],
-
-              ),
-              child: Image(
                   image:  AssetImage('assets/images/food_offer60.png'), fit: BoxFit.cover),
+
+
+
+
+
+
+
 
 
             )
