@@ -142,20 +142,10 @@ class _HomePageState extends State<HomePage> {
                ),
 
 
-               child: Container(
-                 decoration: BoxDecoration(
-                   image: DecorationImage(
-
-                     image: AssetImage('assets/images/fastfood.jpg'),
-                     fit: BoxFit.cover,
-                     colorFilter: new ColorFilter.mode(Colors.black.withOpacity(0.2), BlendMode.dstATop),
-
-                   )
-                 ),
                  child: Image(
 
                    image:  AssetImage('assets/images/fastfood.jpg'), fit: BoxFit.cover),
-               ),
+               //),
 
 
 
@@ -169,6 +159,9 @@ class _HomePageState extends State<HomePage> {
               onTap: (){
                 Navigator.pushNamed(context, Routes.groceries);
               },
+
+
+
               child: Container(
                 margin: EdgeInsets.only(bottom: 15),
                 padding: EdgeInsets.all(25),
@@ -198,32 +191,7 @@ class _HomePageState extends State<HomePage> {
             ),
 
 
-            // Container(
-            //   margin: EdgeInsets.only(bottom: 15),
-            //   padding: EdgeInsets.all(25),
-            //   decoration: BoxDecoration(
-            //     gradient: LinearGradient(
-            //       colors: [
-            //         Colors.blue.withOpacity(0.2),
-            //         Colors.purple.withOpacity(0.6)
-            //       ],
-            //     ),
-            //     color: Colors.white,
-            //     borderRadius: BorderRadius.circular(10),
-            //     boxShadow: [
-            //       BoxShadow(
-            //         offset: Offset(0,4),
-            //         blurRadius: 20,
-            //         color: Color(0xFFB0CCE1).withOpacity(0.32),
-            //       ),
-            //     ],
-            //
-            //   ),
-            //   child: Image(
-            //       image:  AssetImage('assets/images/food_offer.jpg'), fit: BoxFit.cover),
-            //
-            //
-            // ),
+
 
             Container(
               margin: EdgeInsets.only(bottom: 15),

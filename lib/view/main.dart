@@ -6,6 +6,7 @@ import 'package:flutter_food_dot_com/view/login.dart';
 import 'package:flutter_food_dot_com/view/product_details.dart';
 import 'package:flutter_food_dot_com/view/register.dart';
 
+import 'navigation.dart';
 import 'show_cart.dart';
 import 'fast_food.dart';
 import 'groceries.dart';
@@ -26,6 +27,7 @@ void main() {
       Routes.prodetails: (context) => ProductDetiles(),
       Routes.showcart: (context) => AddCard(),
       Routes.map: (context) => Map(),
+      // Routes.navigationBar: (context) => ButtomNavigationBar(),
     },
   ));
 }
