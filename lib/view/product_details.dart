@@ -67,10 +67,7 @@ int _itemCount = 1;
 
       ),
       body: Column(children: [
-        // Text(product.productName)
-        // Padding(
-        //     padding:const EdgeInsets.all(8.0),
-        // ),
+
 
         Padding(
            padding:const EdgeInsets.only(right: 0.0, left: 0.0),
@@ -99,10 +96,7 @@ int _itemCount = 1;
 
               ),
 
-            // child: Image(
-            //   image:AssetImage(product.imagesUri.replaceAll('http://localhost:8081', host)),
-            //   fit: BoxFit.cover,
-            // ),
+
 
 
 

@@ -14,6 +14,7 @@ class FastFood extends StatefulWidget {
 }
 
 class _FastFoodState extends State<FastFood> {
+  int _currentIndex = 0;
   List<Product> plist = [];
 
   @override
@@ -167,6 +168,50 @@ class _FastFoodState extends State<FastFood> {
           ],
         ),
       ),
+
+
+
+
+
+
+
+
+
+      //start bottom navigation bar
+
+      bottomNavigationBar: BottomNavigationBar(
+
+        currentIndex: _currentIndex,
+        items:  [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: "Home",
+            backgroundColor: Colors.cyan,
+
+          ),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.search),
+              label: "Search",
+              backgroundColor: Colors.cyan
+
+          ),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.person),
+              label: "Profile",
+              backgroundColor: Colors.cyan
+
+          )
+        ],
+        onTap: (_currentPages){
+          setState(() {
+            _currentIndex =_currentPages;
+          });
+        },
+      ) ,
+
+      //finish bottom navigation bar
+
+
     );
   }
 }

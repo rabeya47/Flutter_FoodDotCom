@@ -15,6 +15,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  int _currentIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -233,6 +235,48 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
 
+
+
+
+
+      //start bottom navigation bar
+
+      bottomNavigationBar: BottomNavigationBar(
+
+        currentIndex: _currentIndex,
+        items:  [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: "Home",
+            backgroundColor: Colors.cyan,
+
+          ),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.search),
+              label: "Search",
+              backgroundColor: Colors.cyan
+
+          ),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.person),
+              label: "Profile",
+              backgroundColor: Colors.cyan
+
+          )
+        ],
+        onTap: (_currentPages){
+          setState(() {
+            _currentIndex =_currentPages;
+          });
+        },
+      ) ,
+
+      //finish bottom navigation bar
+
+
+
+
     );
   }
 }
+

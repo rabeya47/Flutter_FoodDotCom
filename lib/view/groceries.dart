@@ -14,6 +14,9 @@ class Groceries extends StatefulWidget {
 }
 
 class _GroceriesState extends State<Groceries> {
+  int _currentIndex = 0;
+
+
   List<Product> plist = [];
   @override
   void initState() {
@@ -154,6 +157,51 @@ class _GroceriesState extends State<Groceries> {
           ],
         ),
       ),
+
+
+
+
+
+
+
+
+      //start bottom navigation bar
+
+      bottomNavigationBar: BottomNavigationBar(
+
+        currentIndex: _currentIndex,
+        items:  [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: "Home",
+            backgroundColor: Colors.cyan,
+
+          ),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.search),
+              label: "Search",
+              backgroundColor: Colors.cyan
+
+          ),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.person),
+              label: "Profile",
+              backgroundColor: Colors.cyan
+
+          )
+        ],
+        onTap: (_currentPages){
+          setState(() {
+            _currentIndex =_currentPages;
+          });
+        },
+      ) ,
+
+      //finish bottom navigation bar
+
+
+
+
     );
   }
 }

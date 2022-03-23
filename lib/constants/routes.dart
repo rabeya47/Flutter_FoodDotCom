@@ -8,5 +8,5 @@ class Routes{
   static String prodetails = "prodetails";
   static String showcart = "showcart";
   static String map = "map";
-  static String navigationBar = "buttomnavigationbar";
+  static String oder = "oder";
 }

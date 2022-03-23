@@ -1,10 +1,16 @@
 import 'dart:convert';
 
+
 import 'package:flutter/material.dart';
 import 'package:flutter_food_dot_com/constants/routes.dart';
 import 'package:flutter_food_dot_com/model/cart.dart';
 import 'package:flutter_food_dot_com/networks/http_helper.dart';
+
 import 'package:flutter_svg/svg.dart';
+
+import 'fast_food.dart';
+import 'home.dart';
+import 'login.dart';
 
 class AddCard extends StatefulWidget {
   const AddCard({Key? key}) : super(key: key);
@@ -15,6 +21,15 @@ class AddCard extends StatefulWidget {
 
 class _AddCardState extends State<AddCard> {
   int _currentIndex = 0;
+  final  _currentPages = [
+    HomePage(),
+    FastFood(),
+    MyLogin(),
+
+  ];
+
+
+
   double deliveryCharge = 60.0;
 
 
@@ -85,6 +100,15 @@ class _AddCardState extends State<AddCard> {
           ),
         ),
 
+        actions: <Widget>[
+          IconButton(
+            icon: SvgPicture.asset("assets/icons/food.svg",
+            ),
+            onPressed: () {
+              Navigator.pushNamed(context, Routes.homepage);
+            },
+          )
+        ],
       ),
 
       body: Column(
@@ -134,7 +158,7 @@ class _AddCardState extends State<AddCard> {
 
           Container(
 
-            height: 180,
+            height: 185,
             color: Colors.orange.shade50,
             child: Column(
              children: [
@@ -213,6 +237,36 @@ class _AddCardState extends State<AddCard> {
 
                ),
 
+
+               Row(
+                 children: [
+                   Padding(
+                     padding: const EdgeInsets.only(left: 150.0,top: 5),
+                     child: Column(
+                       children: <Widget>[
+
+                         ElevatedButton(
+
+                           style: ElevatedButton.styleFrom(
+                             primary: Colors.amber, // background
+                             onPrimary: Colors.deepPurple, // foreground
+                           ),
+                           onPressed: () {
+
+                             Navigator.pushNamed(context, Routes.oder);
+
+                           },
+                           child: Text('Oder',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20.0),),
+                         )
+
+                       ],
+                     ),
+                   ),
+
+                 ],
+
+               ),
+
              ],
             ),
 
@@ -223,12 +277,17 @@ class _AddCardState extends State<AddCard> {
 
 
 
-          )
+          ),
 
 
         ],
 
+
       ),
+
+
+
+
 
 
 
@@ -245,6 +304,7 @@ class _AddCardState extends State<AddCard> {
     //start bottom navigation bar
 
       bottomNavigationBar: BottomNavigationBar(
+
         currentIndex: _currentIndex,
           items:  [
             BottomNavigationBarItem(
@@ -266,9 +326,9 @@ class _AddCardState extends State<AddCard> {
 
             )
           ],
-        onTap: (index){
+        onTap: (_currentPages){
             setState(() {
-              _currentIndex =index;
+              _currentIndex =_currentPages;
             });
         },
       ) ,

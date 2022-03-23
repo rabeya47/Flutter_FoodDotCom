@@ -8,6 +8,8 @@ import 'package:http/http.dart' as http;
 var host = 'http://192.168.1.22:8081';       //TSP
 //var host = 'http://192.168.1.107:8081';    //home
 //var host = 'http://localhost:8081';       // crome
+//var host = 'http://192.168.1.73:8081';   //saiful vai
+
 
 var signupApi = host+'/user/save';
 var signinApi = host+'/user/login';
